@@ -4,15 +4,15 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 import store from './redux/store'
-import Main from './containers/main/main';
-import Login from './containers/login/login'
+import Login from './pages/login/login'
+import Admin from './pages/admin/admin';
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Switch>
+      <Switch>{/* only match one */}
         <Route path='/login' component={Login}></Route>
-        <Route component={Main}></Route>
+        <Route path='/' component={Admin}></Route>
       </Switch>
     </BrowserRouter>
   </Provider>
