@@ -43,16 +43,16 @@ export default class Login extends Component {
                         {...layout}
                         name="normal_login"
                         className="login-form"
-                        initialValues={{remember: true}}
+                        initialValues={{ remember: true }}
                         onFinish={onFinish}
                     >
                         <Form.Item
                             name="username"
                             rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input your Username!',
-                                },
+                                { required: true, message: 'Please input your Username!' },
+                                { min: 4, message: 'Username should at least 4 digits!' },
+                                { max: 12, message: 'Username can\'t longer than 12 digits!' },
+                                { pattern: /^[^\s]*$/, message: 'Username can\'t contain whitespace!' }
                             ]}
                         >
                             <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
@@ -61,10 +61,10 @@ export default class Login extends Component {
                         <Form.Item
                             name="password"
                             rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input your Password!',
-                                },
+                                { required: true, message: 'Please input your Password!' },
+                                { min: 4, message: 'Password should at least 4 digits!' },
+                                { max: 12, message: 'Password can\'t longer than 15 digits!' },
+                                { pattern: /^[^\s]*$/, message: 'Password can\'t contain whitespace!' }
                             ]}
                         >
                             <Input.Password
@@ -83,7 +83,7 @@ export default class Login extends Component {
                     </Form>
 
                     <div className='login-content-bottom'>
-                        <span>Sign in with userID</span><br/>
+                        <span>Sign in with userID</span><br />
                         <span>For help please email </span><a href='mailto:http://czhcheng27@gmail.com'>czhcheng27@gmail.com</a>
                     </div>
 
