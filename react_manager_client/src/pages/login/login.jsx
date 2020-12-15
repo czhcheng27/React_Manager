@@ -5,15 +5,21 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './login.less'
 import logo from '../../assets/imgs/nba-logo-transparent.png'
 import nba from '../../assets/imgs/nba.png'
+import { reqLogin } from '../../api';
 
 // const Item = Form.Item
 
 
-const onFinish = (values) => {
-    console.log('Received values of form: ', values);
-};
+
 
 export default class Login extends Component {
+
+    onFinish = async (values) => {
+        console.log('Received values of form: ', values);
+        const result = await reqLogin(values)
+        console.log('result', result);
+    };
+
     render() {
 
         const layout = {
@@ -44,7 +50,7 @@ export default class Login extends Component {
                         name="normal_login"
                         className="login-form"
                         initialValues={{ remember: true }}
-                        onFinish={onFinish}
+                        onFinish={this.onFinish}
                     >
                         <Form.Item
                             name="username"
