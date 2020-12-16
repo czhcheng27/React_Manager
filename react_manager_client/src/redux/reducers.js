@@ -1,7 +1,23 @@
 import {combineReducers} from 'redux'
+import {
+    RECEIVE_USER,
+    SHOW_ERROR_MSG,
+    RESET_USER
+} from './action-types'
 
-function xxx(state = 0, action){
-    return state
+const initUser = {}
+function user(state = initUser, action){
+    switch (action.type){
+        case RECEIVE_USER:
+            return action.data
+        case SHOW_ERROR_MSG:
+            const errorMsg = action.data
+            return {...state, errorMsg}
+        case RESET_USER:
+            return {}
+        default:
+            return state
+    }
 }
 
 function yyy(state = 0, action){
@@ -9,6 +25,6 @@ function yyy(state = 0, action){
 }
 
 export default combineReducers({
-    xxx,
+    user,
     yyy
 })

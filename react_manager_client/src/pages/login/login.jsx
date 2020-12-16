@@ -1,23 +1,28 @@
 import React, { Component } from 'react'
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import {connect} from 'react-redux'
 
 import './login.less'
 import logo from '../../assets/imgs/nba-logo-transparent.png'
 import nba from '../../assets/imgs/nba.png'
 import { reqLogin } from '../../api';
+import { login } from '../../redux/actions';
 
 // const Item = Form.Item
 
 
 
 
-export default class Login extends Component {
+class Login extends Component {
 
     onFinish = async (values) => {
         console.log('Received values of form: ', values);
-        const result = await reqLogin(values)
-        console.log('result', result);
+        // const result = await reqLogin(values)
+        // console.log('result', result);
+        const {username, password} = values
+        console.log(username, password);
+        this.props.login(username, password)
     };
 
     render() {
@@ -99,3 +104,8 @@ export default class Login extends Component {
         )
     }
 }
+
+export default connect(
+    state => ({user: state.user}),
+    {login}
+)(Login)
