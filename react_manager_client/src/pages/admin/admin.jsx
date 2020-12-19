@@ -1,13 +1,22 @@
 import React, {Component} from 'react' 
 import {Button} from 'antd'
+import {connect} from 'react-redux'
 
-export default class Admin extends Component { 
+
+class Admin extends Component { 
     render () { 
+
+        const user = this.props.user
+
         return ( 
             <div>
-                <Button type='primary'>sss</Button>
-                Admin
+                Hello {user.username}
             </div>
         )
     }
 }
+
+export default connect(
+    state => ({user: state.user}),
+    {}
+)(Admin)
