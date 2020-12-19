@@ -4,8 +4,9 @@ import {
     SHOW_ERROR_MSG,
     RESET_USER
 } from './action-types'
+import storageUtils from '../utils/storageUtils'
 
-const initUser = {}
+const initUser = storageUtils.getUser()
 function user(state = initUser, action){
     switch (action.type){
         case RECEIVE_USER:
