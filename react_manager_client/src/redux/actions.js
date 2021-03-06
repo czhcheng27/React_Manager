@@ -6,6 +6,7 @@ import {
 
 import { reqLogin } from '../api/index'
 import storageUtils from '../utils/storageUtils'
+import storageUtlis from '../utils/storageUtils'
 
 export const receiveUser = (user) => ({type: RECEIVE_USER, data: user})
 export const showErrorMsg = (errorMsg) => ({type: SHOW_ERROR_MSG, data: errorMsg})
@@ -22,4 +23,9 @@ export const login = (username, password) => {
             dispatch(showErrorMsg(msg))
         }
     }
+}
+
+export const logout = () => {
+    storageUtlis.removeUser()
+    return {type: RESET_USER}
 }

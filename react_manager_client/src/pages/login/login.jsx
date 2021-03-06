@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom';
@@ -47,7 +47,7 @@ class Login extends Component {
             <div className='login'>
                 <div className='login-content-left'>
                     <header className='login-header'>
-                        <img src={logo} style={{ width: 50, height: 100 }}></img>
+                        <img src={logo} style={{ width: 50, height: 100 }} alt=''></img>
                         <h1>NBA Manager System</h1>
                     </header>
                     <span className='solgan'>WHERE AMAZING HAPPEN</span>
