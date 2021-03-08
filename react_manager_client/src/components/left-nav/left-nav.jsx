@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { Menu } from 'antd'
 
 import header from '../../assets/imgs/image.png'
@@ -7,7 +7,7 @@ import './left-nav.less'
 import menuList from '../../config/menuConfig'
 import SubMenu from 'antd/lib/menu/SubMenu'
 
-export default class LeftNav extends Component {
+class LeftNav extends Component {
 
     getMenuNodes = (menuList) => {
         return menuList.map(menu => {
@@ -35,6 +35,8 @@ export default class LeftNav extends Component {
         })
     }
     render() {
+
+        const openKey = this.props.location.pathname
         return (
             <div className='left-nav'>
                 <Link to='/' className='left-nav-header'>
@@ -45,6 +47,7 @@ export default class LeftNav extends Component {
                 <Menu
                     mode="inline"
                     theme="dark"
+                    selectedKeys={[openKey]}
                 >
                     {this.getMenuNodes(menuList)}
                 </Menu>
@@ -52,3 +55,5 @@ export default class LeftNav extends Component {
         )
     }
 }
+
+export default withRouter(LeftNav)
